@@ -4,23 +4,31 @@
 
 
 @layer components {
-    .hero-bg-image {
-        height: 100vh;
+
+    /* .hero-bg-image {
+        height: 100%;
         width: 100%;
         background-image: url(resources/hero_bg_image.jpg);
         background-repeat: no-repeat;
         background-position: bottom;
-        background-size: 100%;
+        background-size: cover;
+
+    } */
+    .gradientText {
+
+        /** TEXT GRADIENT */
+
+        /** TEXT GRADIENT */
+        background: -webkit-linear-gradient(33deg, #374151 28%, #e33300 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+
+
 
     }
 
     @media (max-width:1440px) {
-        .bom {}
 
-        .testClass {
-            color: red;
-            
-        }
 
         .hero-bg-image {
             height: 100vh;
@@ -32,15 +40,9 @@
 
         }
     }
-.ddd{
-    width: fit-content;
-}
-    @media (max-width:1000px) {
-        .bom {}
 
-        .testClass {
-            color: green;
-        }
+    @media (max-width:1000px) {
+
 
         .hero-bg-image {
             height: 100vh;
@@ -54,9 +56,7 @@
     }
 
     @media (max-width:960px) {
-        .testClass{
-            color:yellow
-        }
+
 
         .hero-bg-image {
             height: 100vh;
@@ -70,7 +70,7 @@
     }
 
     @media (max-width:576px) {
-        .bom {}
+
 
         .hero-bg-image {
             height: 100vh;
