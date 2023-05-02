@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    .hero-bg-image {
+        height: 100vh;
+        width: 100%;
+        background-image: url(resources/hero_bg_image.jpg);
+        background-repeat: no-repeat;
+        background-position: bottom;
+        background-size: 100%;
+
+    }
+
+    @media (max-width:1440px) {
+        .bom {}
+
+        .testClass {
+            color: red;
+            
+        }
+
+        .hero-bg-image {
+            height: 100vh;
+            width: 100%;
+            background-image: url(resources/hero_bg_image.jpg);
+            background-repeat: no-repeat;
+            background-position: bottom;
+            background-size: cover;
+
+        }
+    }
+.ddd{
+    width: fit-content;
+}
+    @media (max-width:1000px) {
+        .bom {}
+
+        .testClass {
+            color: green;
+        }
+
+        .hero-bg-image {
+            height: 100vh;
+            width: 100%;
+            background-image: url(resources/hero_bg_image.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+        }
+    }
+
+    @media (max-width:960px) {
+        .testClass{
+            color:yellow
+        }
+
+        .hero-bg-image {
+            height: 100vh;
+            width: 100%;
+            background-image: url(resources/hero_bg_image.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+        }
+    }
+
+    @media (max-width:576px) {
+        .bom {}
+
+        .hero-bg-image {
+            height: 100vh;
+            width: 100%;
+            background-image: url(resources/hero_bg_image.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+
+        }
+
+    }
+
+
+}
