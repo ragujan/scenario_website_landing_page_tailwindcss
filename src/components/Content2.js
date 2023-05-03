@@ -1,9 +1,9 @@
 import React from 'react'
 
-function Content23() {
+function Content2() {
     return (
         <div className=' pt-7'>
-            <div className='grid grid-cols-1 px-10 pt-10 pb-20 bg-mainGray md:grid-cols-2 lg:grid-cols-3 gap-x-20'>
+            <div className='grid grid-cols-1 px-10 pt-10 pb-20 gap-y-10 bg-mainGray md:grid-cols-2 lg:grid-cols-3 gap-x-20'>
                 {/* first div */}
 
                 <div class="w-full  md:translate-y-8 py-8 bg-imageCardBg  rounded-lg">
@@ -45,4 +45,4 @@ your production</p>
     )
 }
 
-export default Content23
+export default Content2
