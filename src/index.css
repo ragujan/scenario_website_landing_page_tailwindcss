@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.shrinkInside {
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-weight: bolder;
+
+}
+
+
 
 @layer components {
 
@@ -15,16 +25,15 @@
 
     } */
     .gradientText {
-
-        /** TEXT GRADIENT */
-
-        /** TEXT GRADIENT */
         background: -webkit-linear-gradient(33deg, #374151 28%, #e33300 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+    }
 
-
-
+    .gradientTextYellow {
+        background: -webkit-linear-gradient(33deg, #374151 28%, #dfe300 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
 
     @media (max-width:1440px) {
