@@ -11,9 +11,9 @@ function Hero() {
         {/* hero div content */}
         <div className=''>
 
-          <h1 className='text-6xl font-bold text-center text-white mt-14'>AI-generated <br /> game assets</h1>
-          <h5 className='px-4 mt-6 text-center md:px-1'>Create high-quality, style-consistent, proprietary assets for your <br /> games</h5>
-          <div className='text-center'>
+          <h1 className='text-6xl font-bold text-center text-white mt-14 fadeInFromBottomAnimation'>AI-generated <br /> game assets</h1>
+          <h5 className='px-4 mt-6 text-center md:px-1 fadeInFromBottomAnimation'>Create high-quality, style-consistent, proprietary assets for your <br /> games</h5>
+          <div className='text-center fadeInFromBottomAnimation'>
 
             <button className='px-10 py-2 mt-5 text-center text-white duration-200 ease-in bg-red-500 rounded-lg hover:bg-red-400 hover:font-bold hover:text-gray-500 '>Start Creating Today</button>
           </div>
