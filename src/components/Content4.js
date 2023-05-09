@@ -4,21 +4,24 @@ import React, { useEffect, useRef, useState } from 'react'
 
 function Content4() {
     const [isInterSecting1, setIsIntersecting1] = useState(false);
+    const [isInterSecting2, setIsIntersecting2] = useState(false);
     const [stepper1AnimationEnd, setStepper1AnimationEnd] = useState(false);
 
     const ref1 = useRef(null);
+    const ref2 = useRef(null);
+
 
     const hider1 = useRef(null);
     const hider2 = useRef(null);
     const refStepper1 = useRef(null);
-   
+
 
     const options = {
         root: null,
         rootMargin: "0px",
         threshold: 1
     }
-   
+
 
     useEffect(() => {
         const stepper1Rect = refStepper1.current;
@@ -50,7 +53,14 @@ function Content4() {
             },
             options
         )
+        const observer2 = new IntersectionObserver(
+            ([entry]) => {
+                setIsIntersecting2(entry.isIntersecting);
+            },
+            options
+        )
         observer1.observe(ref1.current)
+        observer2.observe(ref2.current)
 
 
     })
@@ -60,7 +70,7 @@ function Content4() {
             hider1.current.classList.add("moveFromTop")
         }
 
-        if (stepper1AnimationEnd) {
+        if (stepper1AnimationEnd && isInterSecting2) {
             hider2.current.classList.add("moveFromTop")
         }
 
@@ -74,17 +84,17 @@ function Content4() {
                 {/* stepper  */}
                 <div className='absolute top-[0%] left-0 flex flex-col items-center  w-full h-[100%]  '>
 
-                    <div className='flex flex-col items-center p-0 h-[75%] mt-[12.5%] bg-pink-600'>
+                    <div className='flex flex-col items-center p-0 h-[75%] mt-[12.5%] '>
                         <div ref={ref1} className='w-6 h-6 bg-blue-600 rounded-full'></div>
 
                         <div ref={refStepper1} className='w-2 relative overflow-hidden h-[50%] bgStepper brobro'>
                             <div ref={hider1} className='bg-gray-500 h-[100%] absolute top-0 left-0 w-full'></div>
                         </div>
 
-                        <div className='w-6 h-6 bg-blue-600 rounded-full'></div>
+                        <div ref={ref2} className='w-6 h-6 bg-blue-600 rounded-full'></div>
 
 
-                        <div  className='w-2 relative overflow-hidden h-[50%] bgStepper'>
+                        <div className='w-2 relative overflow-hidden h-[50%] bgStepper'>
                             <div ref={hider2} className='bg-gray-500 h-[100%] absolute top-0 left-0 w-full'></div>
                         </div>
 
