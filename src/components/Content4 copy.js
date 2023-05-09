@@ -3,45 +3,34 @@ import React, { useEffect, useRef, useState } from 'react'
 
 
 function Content4() {
-    const [isInterSecting1, setIsIntersecting1] = useState(false);
-    const [stepper1AnimationEnd, setStepper1AnimationEnd] = useState(false);
+    const [isInterSecting1, setIsIntersecting1] = useState(false)
+    const [isInterSecting2, setIsIntersecting2] = useState(false)
+    const [isInterSecting3, setIsIntersecting3] = useState(false)
+
+    const [isStepper1Intersecting, setIsStepper1Intersecting] = useState(false)
+    const [isStepper2Intersecting, setIsStepper2Intersecting] = useState(false)
+    const [isHider1Hidden,setIsHider1Hidden] = useState(false)
+
+
 
     const ref1 = useRef(null);
-
+    const ref2 = useRef(null);
+    const ref3 = useRef(null);
     const hider1 = useRef(null);
     const hider2 = useRef(null);
     const refStepper1 = useRef(null);
-   
+    const refStepper2 = useRef(null);
 
     const options = {
         root: null,
         rootMargin: "0px",
         threshold: 1
     }
-   
-
-    useEffect(() => {
-        const stepper1Rect = refStepper1.current;
-        const hider1Rect = hider1.current;
-
-        const animationEnd = () => {
-            const stepper1Bottom = stepper1Rect.getBoundingClientRect().bottom;
-            const hider1Bottom = hider1Rect.getBoundingClientRect().bottom;
-
-            if (hider1Bottom > stepper1Bottom) {
-                // animation ends here I mean the child div passes the parent div
-                setStepper1AnimationEnd(true)
-            }
-
-        }
-
-        hider1Rect.addEventListener("animationend", animationEnd)
-
-        return () => {
-            hider1Rect.removeEventListener("animationend", animationEnd);
-        };
-    })
-
+    const optionsHider = {
+        root: refStepper1.current,
+        rootMargin: "0px",
+        threshold: 0
+    }
 
     useEffect(() => {
         const observer1 = new IntersectionObserver(
@@ -50,23 +39,58 @@ function Content4() {
             },
             options
         )
+        const observer2 = new IntersectionObserver(
+            ([entry]) => {
+                setIsIntersecting2(entry.isIntersecting)
+            },
+            options
+        )
+        const observerStepper1 = new IntersectionObserver(
+            ([entry]) => {
+                setIsStepper1Intersecting(entry.isIntersecting)
+            },
+            options
+        )
+        const observerStepper2 = new IntersectionObserver(
+            ([entry]) => {
+                setIsStepper2Intersecting(entry.isIntersecting)
+            },
+            options
+        )
+        const observerHider1 = new IntersectionObserver(
+            ([entry]) => {
+                console.log("ref stepper is ")
+                console.log(refStepper1)
+                setIsHider1Hidden(entry.isIntersecting)
+            },
+            optionsHider
+        )
         observer1.observe(ref1.current)
-
-
+        observer2.observe(ref2.current)
+        observerStepper1.observe(refStepper1.current)
+        observerStepper2.observe(refStepper2.current)
+        observerHider1.observe(hider1.current)
+        console.log("hider1 "+hider1.current);
+        console.log("hider state is "+isHider1Hidden)
+        // console.log("one is " + isInterSecting1)
+        // console.log("two is " + isInterSecting2)
+        // console.log("three is " + isInterSecting3)
     })
+
     useEffect(() => {
-
         if (isInterSecting1) {
+            console.log("bro bro")
             hider1.current.classList.add("moveFromTop")
-        }
 
-        if (stepper1AnimationEnd) {
+        }
+        if (isInterSecting2 && isHider1Hidden  ) {
+
             hider2.current.classList.add("moveFromTop")
         }
+        if (isInterSecting3) {
 
+        }
     })
-
-
     return (
         <>
             {/* main container */}
@@ -77,18 +101,18 @@ function Content4() {
                     <div className='flex flex-col items-center p-0 h-[75%] mt-[12.5%] bg-pink-600'>
                         <div ref={ref1} className='w-6 h-6 bg-blue-600 rounded-full'></div>
 
-                        <div ref={refStepper1} className='w-2 relative overflow-hidden h-[50%] bgStepper brobro'>
+                        <div ref={refStepper1} className='w-2 relative overflow-hidden h-[50%] bgStepper'>
                             <div ref={hider1} className='bg-gray-500 h-[100%] absolute top-0 left-0 w-full'></div>
                         </div>
 
-                        <div className='w-6 h-6 bg-blue-600 rounded-full'></div>
+                        <div ref={ref2} className='w-6 h-6 bg-blue-600 rounded-full'></div>
 
 
-                        <div  className='w-2 relative overflow-hidden h-[50%] bgStepper'>
+                        <div ref={refStepper2} className='w-2 relative overflow-hidden h-[50%] bgStepper'>
                             <div ref={hider2} className='bg-gray-500 h-[100%] absolute top-0 left-0 w-full'></div>
                         </div>
 
-                        <div className='w-6 h-6 bg-blue-600 rounded-full'>
+                        <div ref={ref3} className='w-6 h-6 bg-blue-600 rounded-full'>
                         </div>
                     </div>
 

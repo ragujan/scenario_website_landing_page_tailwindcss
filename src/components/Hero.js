@@ -21,9 +21,9 @@ function Hero() {
           {/* button section  */}
           <div className='flex items-center justify-center h-full mt-10'>
             <div className='flex flex-col items-center md:flex-row gap-y-3'>
-              <button className=''><img src={require("../resources/app_store.png")} alt="" srcset="" className='w-36' /></button>
-              <button className=''><img src={require("../resources/google_play.png")} alt="" srcset="" className='w-36' /></button>
-              <button className=''><img src={require("../resources/desktop_download.png")} alt="" srcset="" className='w-36' /></button>
+              <button className=''><img src={require("../resources/app_store.png")} alt=""  className='w-36' /></button>
+              <button className=''><img src={require("../resources/google_play.png")} alt=""  className='w-36' /></button>
+              <button className=''><img src={require("../resources/desktop_download.png")} alt=""  className='w-36' /></button>
             </div>
 
           </div>
