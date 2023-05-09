@@ -21,8 +21,6 @@ function App() {
       <Content2/>
       <Content3/>
       <Content4/>
-      {/* <Test/> */}
-      {/* <ChildComponent/> */}
     </div>
   );
 }
