@@ -7,6 +7,7 @@ import Content2 from './components/Content2';
 import Content3 from './components/Content3';
 import Content4 from './components/Content4';
 import React, { useEffect, useState, useRef } from 'react'
+import Content5 from './components/Content5';
 // import App2 from './App2';
 
 
@@ -21,6 +22,7 @@ function App() {
       <Content2/>
       <Content3/>
       <Content4/>
+      <Content5/>
     </div>
   );
 }
