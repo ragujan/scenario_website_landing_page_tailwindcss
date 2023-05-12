@@ -192,7 +192,7 @@ body {
 
     .moveFromTop {
         animation-name: 'topToBottom';
-        animation-duration: 4s;
+        animation-duration: 3s;
         animation-fill-mode: forwards;
         animation-direction: normal;
         animation-iteration-count: 1;
@@ -200,7 +200,7 @@ body {
 
     .movingAnimation {
         animation-name: 'topToBottom';
-        animation-duration: 4s;
+        animation-duration: 3s;
         animation-fill-mode: forwards;
         animation-direction: normal;
         animation-iteration-count: 1;
@@ -209,7 +209,7 @@ body {
 
     .slide {
         animation-name: 'topToBottom';
-        animation-duration: 4s;
+        animation-duration: 3s;
         animation-fill-mode: forwards;
         animation-direction: normal;
         animation-iteration-count: 1;

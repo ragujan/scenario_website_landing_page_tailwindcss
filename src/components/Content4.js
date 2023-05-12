@@ -22,6 +22,8 @@ function Content4() {
         threshold: 1
     }
 
+    
+
 
     useEffect(() => {
         const stepper1Rect = refStepper1.current;
