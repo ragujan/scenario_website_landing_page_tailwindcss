@@ -1,0 +1,59 @@
+.topDiv {
+    background-color: purple;
+    height: 600px;
+    width: 100%;
+}
+
+.containerRag {
+    background-color: pink;
+    position: relative;
+    /*Optional: For Demo Purposes*/
+    width: 100%;
+    height: 900px;
+}
+
+#triangle1 {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 15vh solid transparent;
+    border-bottom: 15vh solid transparent;
+    border-left: 15vh solid #484848;
+    top: 25%;
+    left: 42.5%;
+    z-index: 2;
+}
+
+#triangle2 {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 15vh solid transparent;
+    border-bottom: 15vh solid transparent;
+    border-left: 15vh solid #383838;
+    top: 25%;
+    left: 47.5%;
+    z-index: 2;
+}
+
+#triangle3 {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-top: 15vh solid transparent;
+    border-bottom: 15vh solid transparent;
+    border-left: 15vh solid #282828;
+    top: 25%;
+    left: 52.5%;
+    z-index: 2;
+}
+
+a.sd {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.2);
+    display: block;
+    position: absolute;
+    top: 60%;
+    width: 100%;
+    text-align: center;
+}

@@ -1,140 +1,218 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 function Content5() {
+  // let mainContainer = useRef(null);
+  // let rollerDiv1 = useRef(null);
+  // let rollerDiv2 = useRef(null);
+  // let rollerDiv3 = useRef(null);
+  // const [containerTouched, setContainerTouched] = useState(false);
 
-    const options = {
-        root: null,
-        rootMargin: "0px",
-        threshold: 0
-    }
+  // const [tri1XInitial, setTri1XInitial] = useState(0);
+  // const [tri3XInitial, setTri3XInitial] = useState(0);
 
-    const [isAnimationStarted, setIsAnimationStarted] = useState(false);
-    const rollerRef = useRef(null);
-    const containerRef = useRef(null);
-    const [movedPos,setMovedPos] = useState(0);
+  const tri1Ref = useRef(null);
+  const tri2Ref = useRef(null);
+  const tri3Ref = useRef(null);
+  const container = useRef(null);
 
-    let body = document.body,
-        html = document.documentElement;
+  const RAFThrottle = (fn) => {
+    let throttled = false;
+    return () => {
+      if (throttled) return;
 
-    let height = Math.max(body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight, html.offsetHeight);
+      requestAnimationFrame(() => {
+        throttled = false;
+        fn();
+      });
+    };
+    console.log("bro");
+  };
 
-    let prevCurrent = 0;
+  useEffect(() => {
+    const tri1 = tri1Ref.current;
+    const tri1XInitial = tri1.getBoundingClientRect().y;
 
+    const handleScroll = () => {
+      let substractionAmount = container.current.offsetTop;
+      const containerTop = container.current.getBoundingClientRect().top;
 
+      if (containerTop <= 0) {
+        const dist = 100;
+        const body = document.body;
+        const html = document.documentElement;
+        const height = Math.max(
+          body.scrollHeight,
+          body.offsetHeight,
+          html.clientHeight,
+          html.scrollHeight,
+          html.offsetHeight
+        );
+        const total = height - substractionAmount;
 
+        const current = window.scrollY - substractionAmount;
 
-    useEffect(() => {
-        const observer1 = new IntersectionObserver(
-            ([entry]) => {
-                setIsAnimationStarted(entry.isIntersecting);
-            }, options
-        )
+        const per = current / total;
 
-        observer1.observe(rollerRef.current);
-    })
+        console.log("top ", container.current.offsetTop);
+        console.log("total is ", total);
+        console.log("current ", current);
+        console.log("per ", per);
 
+        tri1.style.transition = "top 0.3s ease-out";
+        tri1.style.top =
+          -(dist * per * 20) + (tri1XInitial - substractionAmount) + "px";
+      }
+    };
+    window.addEventListener("scroll", RAFThrottle(handleScroll), {
+      passive: true,
+    });
+  }, []);
 
+  useEffect(() => {
+    const tri2 = tri2Ref.current;
+    const tri2XInitial = tri2.getBoundingClientRect().y;
 
-    const scrollFuncStart = () => {
+    const handleScroll = () => {
+      let substractionAmount = container.current.offsetTop;
+      const containerTop = container.current.getBoundingClientRect().top;
 
+      if (containerTop <= 0) {
+        const dist = 100;
+        const body = document.body;
+        const html = document.documentElement;
+        const height = Math.max(
+          body.scrollHeight,
+          body.offsetHeight,
+          html.clientHeight,
+          html.scrollHeight,
+          html.offsetHeight
+        );
+        const total = height - substractionAmount;
 
-        let total = Math.max(body.scrollHeight, body.offsetHeight,
-            html.clientHeight, html.scrollHeight, html.offsetHeight);
+        const current = window.scrollY - substractionAmount;
 
-        let current = window.scrollY;
+        const per = current / total;
 
-        let per = current / total;
+        console.log("top ", container.current.offsetTop);
+        console.log("total is ", total);
+        console.log("current ", current);
+        console.log("per ", per);
 
-        let roller = rollerRef.current;
+        tri2.style.transition = "top 0.3s ease-out";
 
-        let rollerPosY = roller.getBoundingClientRect.y;
-        
-        let currentMovedPos = per;
-        
-        console.log(per)
+        tri2.style.top =
+          dist * per * 50 + (tri2XInitial - substractionAmount) + "px";
+      }
+    };
+    window.addEventListener("scroll", RAFThrottle(handleScroll), {
+      passive: true,
+    });
+  }, []);
+  useEffect(() => {
+    const tri3 = tri3Ref.current;
+    const tri3XInitial = tri3.getBoundingClientRect().y;
 
-    }
-    useEffect(() => {
+    const handleScroll = () => {
+      let substractionAmount = container.current.offsetTop;
+      const containerTop = container.current.getBoundingClientRect().top;
 
+      if (containerTop <= 0) {
+        const dist = 100;
+        const body = document.body;
+        const html = document.documentElement;
+        const height = Math.max(
+          body.scrollHeight,
+          body.offsetHeight,
+          html.clientHeight,
+          html.scrollHeight,
+          html.offsetHeight
+        );
+        const total = height - substractionAmount;
 
+        const current = window.scrollY - substractionAmount;
 
-        console.log(isAnimationStarted)
-        if (isAnimationStarted) {
-            console.log("animation started")
-            window.addEventListener('scroll',
-                scrollFuncStart
-            )
+        const per = current / total;
 
-        }
-        if (!isAnimationStarted) {
-            console.log("animation stopped")
-            window.removeEventListener('scroll',
-                scrollFuncStart
-            )
-        }
-        return () => window.removeEventListener('scroll',
-            scrollFuncStart
-        )
-    })
+        console.log("top ", container.current.offsetTop);
+        console.log("total is ", total);
+        console.log("current ", current);
+        console.log("per ", per);
 
+        tri3.style.transition = "top 0.3s ease-out";
+        tri3.style.top =
+          -(dist * per * 20) + (tri3XInitial - substractionAmount) + "px";
+      }
+    };
+    window.addEventListener("scroll", RAFThrottle(handleScroll), {
+      passive: true,
+    });
+  }, []);
 
-    let array = Array.from(Array(6).keys());
-    const placeImagesCol1 = (imageCount, column) => (
-        array.map((index) => (
-            <div key={index}>
-                <img src={require(`../resources/col_${column}_${index + 1}.png`)} className='w-[380px] h-[380px] rounded-lg object-cover object-center object' />
-            </div>
-        )
-        )
-
-    )
-    const placeImagesCol2 = (imageCount, column) => (
-        array.map((index) => (
-            <div key={index}>
-                <img src={require(`../resources/col_${column}_${index + 1}.png`)} className='w-[380px] h-[380px] rounded-lg object-cover object-center object ' />
-            </div>
-        )
-        )
-
-    )
-    const placeImagesCol3 = (imageCount, column) => (
-        array.map((index) => (
-            <div key={index}>
-                <img src={require(`../resources/col_${column}_${index + 1}.png`)} className='w-[380px] h-[380px] rounded-lg object-cover object-center object ' />
-            </div>
-        )
-        )
-
-    )
-    return (
-        <div className='grid grid-cols-1 px-5 py-20 bg-purple-800 md:grid-cols-3 lg:grid-cols-3 gap-x-10'>
-            {/* column 1 */}
-            <div className='flex flex-col py-4 mt-10 gap-y-10'>
-                {
-                    placeImagesCol1(6, 1)
-                }
-
-            </div>
-            <div ref={containerRef} className='relative overflow-hidden text-center bg-red-600'>
-
-                <div ref={rollerRef} className='absolute flex flex-col justify-center py-4 gap-y-10'>
-                    {
-                        placeImagesCol2(6, 2)
-                    }
-
-                </div>
-            </div>
-            <div className='flex flex-col py-4 mt-10 gap-y-10'>
-                {
-                    placeImagesCol3(6, 3)
-                }
-
-            </div>
-
-
-        </div>
-    )
+  let array = Array.from(Array(6).keys());
+  const placeImagesCol1 = (imageCount, column) =>
+    array.map((index) => (
+      <div key={index} className="flex flex-row justify-center ">
+        <img
+          src={require(`../resources/col_${column}_${index + 1}.png`)}
+          className="w-[380px] h-[380px] rounded-3xl object-cover object-center object"
+        />
+      </div>
+    ));
+  const placeImagesCol2 = (imageCount, column) =>
+    array.map((index) => (
+      <div key={index} className="flex flex-row justify-center ">
+        <img
+          src={require(`../resources/col_${column}_${index + 1}.png`)}
+          className="w-[380px] h-[380px] rounded-3xl object-cover object-center object "
+        />
+      </div>
+    ));
+  const placeImagesCol3 = (imageCount, column) =>
+    array.map((index) => (
+      <div key={index} className="flex flex-row justify-center bg-purple-800">
+        <img
+          src={require(`../resources/col_${column}_${index + 1}.png`)}
+          className="w-[380px] h-[380px] rounded-3xl object-cover object-center object "
+        />
+      </div>
+    ));
+  return (
+    // main container
+    <div
+      ref={container}
+      className="grid grid-cols-3 py-10 overflow-hidden bg-yellow-900"
+    >
+      {/* roller one or column 1 */}
+      {/* <div className="relative flex flex-row justify-center h-full overflow-hidden bg-blue-400"> */}
+      <div
+        ref={tri1Ref}
+        className="relative flex flex-col justify-center h-full overflow-hidden bg-blue-400"
+      >
+        {placeImagesCol1(6, 1)}
+      </div>
+      {/* </div> */}
+      {/* roller two or column 2 */}
+      <div
+        ref={tri2Ref}
+        className="relative flex flex-col justify-center h-full overflow-hidden bg-red-400 top-[-65%]"
+      >
+        {placeImagesCol2(6, 2)}
+      </div>
+      {/* roller three or column 3 */}
+      <div
+        ref={tri3Ref}
+        className="relative flex flex-col justify-center h-full overflow-hidden bg-blue-400"
+      >
+        {placeImagesCol1(6, 1)}
+      </div>
+    </div>
+  );
 }
 
-export default Content5
+export default Content5;

@@ -1,12 +1,12 @@
-import logo from './logo.svg';
-import './App.css';
-import Hero from './components/Hero';
-import Content1 from './components/Content1';
 
-import Content2 from './components/Content2';
-import Content3 from './components/Content3';
-import Content4 from './components/Content4';
+import './App.css';
+import './test.css'
 import React, { useEffect, useState, useRef } from 'react'
+
+import Test from './components/Test';
+import TopDiv from './components/TopDiv';
+import Test2 from './components/Test2';
+import Test3 from './components/Test3';
 import Content5 from './components/Content5';
 // import App2 from './App2';
 
@@ -16,13 +16,12 @@ function App() {
 
 
   return (
-    <div className='bg-mainGray '>
-      <Hero/>
-      <Content1/>
-      <Content2/>
-      <Content3/>
-      <Content4/>
-      <Content5/>
+    <div>
+      <TopDiv/>
+      {/* <Test/> */}
+      {/* <Content5/> */}
+      <Test3/>
+
     </div>
   );
 }
