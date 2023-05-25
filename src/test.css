@@ -3,6 +3,11 @@
     height: 600px;
     width: 100%;
 }
+.bottomDiv {
+    background-color: purple;
+    height: 600px;
+    width: 100%;
+}
 
 .containerRag {
     background-color: pink;
