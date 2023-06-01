@@ -35,7 +35,6 @@ function Test6() {
       });
     };
   };
-  useEffect(() => {});
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
       const [entry] = entries;
