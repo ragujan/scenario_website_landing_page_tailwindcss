@@ -1,13 +1,8 @@
-import React, {
-  useEffect,
-  useRef,
-} from "react";
+import React, { useEffect, useRef } from "react";
 import PlaceImagesCol1 from "../util_components/PlaceImagesCol1";
 import PlaceImagesCol2 from "../util_components/PlaceImagesCol2";
 
 function Content53() {
-
-
   const tri1Ref = useRef(null);
   const tri2Ref = useRef(null);
   const tri3Ref = useRef(null);
@@ -34,14 +29,6 @@ function Content53() {
     };
   }
 
-  useEffect(() => {
-    const containerTop = container.current.getBoundingClientRect().top;
-
-    if (containerTop <= 0) {
-      mainContainer.current.classList.add("fixed");
-      mainContainer.current.classList.add("top-0");
-    }
-  });
   useEffect(() => {
     const tri1 = tri1Ref.current;
     const tri1XInitial = tri1.getBoundingClientRect().y;
@@ -78,8 +65,6 @@ function Content53() {
       }
     };
 
-
- 
     window.addEventListener(
       "scroll",
       () => {
@@ -186,18 +171,27 @@ function Content53() {
     );
   }, []);
 
+  useEffect(() => {
+    const containerTop = container.current.getBoundingClientRect().top;
+
+    if (containerTop <= 0) {
+      mainContainer.current.classList.add("fixed");
+      mainContainer.current.classList.add("top-0");
+    }
+  });
   return (
     <>
       <div className="">
         <div
           ref={mainContainer}
-          className="h-[100vh]  overflow-hidden bg-green-800 "
+          className="h-[100vh]  overflow-hidden no-scrollbar  bg-green-800 "
         >
+       
           <div className="py-3 ">
             <div ref={container} className="grid grid-cols-3 py-10 ">
               <div
                 ref={tri1Ref}
-                className="relative flex flex-col justify-center h-full overflow-hidden bg-blue-400"
+                className="relative flex flex-col justify-center h-full bg-blue-400"
               >
                 <PlaceImagesCol1 column={1} />
               </div>
@@ -205,14 +199,14 @@ function Content53() {
               {/* roller two or column 2 */}
               <div
                 ref={tri2Ref}
-                className="relative flex flex-col justify-center h-full overflow-hidden bg-red-400 top-[-65%]"
+                className="relative flex flex-col justify-center h-full  bg-red-400 top-[-65%]"
               >
                 <PlaceImagesCol2 column={2} />
               </div>
               {/* roller three or column 3 */}
               <div
                 ref={tri3Ref}
-                className="relative flex flex-col justify-center h-full overflow-hidden bg-blue-400"
+                className="relative flex flex-col justify-center h-full bg-blue-400"
               >
                 <PlaceImagesCol1 column={3} />
               </div>
